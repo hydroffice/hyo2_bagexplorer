@@ -1,0 +1,64 @@
+# Travis-CI does not currently support Python and Mac OS X
+language: cpp
+
+os:
+  - linux
+  - osx
+
+env:
+  - PYTHON_VERSION=3.6
+
+matrix:
+  allow_failures:
+  - os: linux  # because of wx Phoenix
+
+before_install:
+  # Set the anaconda environment
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      if [[ "$PYTHON_VERSION" == "2.7" ]]; then
+        curl https://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-x86_64.sh -o miniconda.sh;
+      else
+        curl https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o miniconda.sh;
+      fi
+    else
+      if [[ "$PYTHON_VERSION" == "2.7" ]]; then
+        wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
+      else
+        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+      fi
+    fi
+
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - conda info -a
+
+  # create and activate a test-environment
+  - conda create -q -n test-environment python=$PYTHON_VERSION
+  - source activate test-environment
+
+install:
+  - conda config --add channels conda-forge
+  - conda install -q h5py lxml numpy matplotlib pydap requests shapely proj4 geos cartopy setuptools gdal
+  - pip install --no-deps hyo2.bag
+  - pip install wxPython
+  - pip install --no-deps https://github.com/HDFGroup/hdf-compass/archive/py3.zip
+
+script:
+  - pip install --no-deps -e .
+  #  - python -m unittest  # placeholder
+
+after_script:
+  # If tests are successful, create a source distribution.
+  - python setup.py sdist
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      python setup.py bdist_wheel;
+    fi
+
+addons:
+  artifacts:
+    debug: true
+    paths:
+    - ./dist

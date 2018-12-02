@@ -1,0 +1,12 @@
+{
+  "title": "BAGExplorer 0.3.1",
+  "background": "dmg.png",
+  "icon": "../hydroffice/bagexplorer/media/BAGExplorer.icns",
+  "icon-size": 80,
+  "contents": [
+    { "x": 128, "y": 110, "type": "file", "path": "../dist/BAGExplorer.app" },
+    { "x": 370, "y": 110, "type": "link", "path": "/Applications" }
+  ]
+
+}
+
