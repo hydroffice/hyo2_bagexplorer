@@ -1,4 +1,6 @@
 import logging
+from hyo2.bagexplorer import explorer
+
 # logging settings
 logger = logging.getLogger()
 logger.setLevel(logging.NOTSET)
@@ -8,5 +10,4 @@ ch_formatter = logging.Formatter('%(levelname)-9s %(name)s.%(funcName)s:%(lineno
 ch.setFormatter(ch_formatter)
 logger.addHandler(ch)
 
-from . import explorer
 explorer.run()
