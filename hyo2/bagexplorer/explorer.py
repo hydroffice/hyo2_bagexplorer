@@ -1,13 +1,14 @@
 import wx
 
 import logging
-log = logging.getLogger(__name__)
 
 from hdf_compass.compass_viewer.viewer import load_plugins
 from hdf_compass.compass_viewer import open_store, CompassApp
 from hdf_compass import utils
 
 from hyo2.bagexplorer import frame
+
+log = logging.getLogger(__name__)
 
 
 class BagExplorerApp(CompassApp):

@@ -44,7 +44,7 @@ install:
   - conda install -q h5py lxml numpy matplotlib pydap requests shapely proj4 geos cartopy setuptools gdal
   - pip install --no-deps hyo2.bag
   - pip install wxPython
-  - pip install --no-deps https://github.com/HDFGroup/hdf-compass/archive/py3.zip
+  - pip install --no-deps hdf-compass>=0.7b10
 
 script:
   - pip install --no-deps -e .

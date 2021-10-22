@@ -7,14 +7,20 @@
 # python /path/to/pyinstaller.py freeze/BAGExplorer.1folder.spec
 #
 # The resulting .exe file is placed in the dist/BAGExplorer folder.
-
+#
 # REQUIRED TO MANUALLY COPY: wx\lib\pubsub\core or pubsub\sub
+#
+# Uploading to BitBucket: curl -s -v -u giumas:password -X POST https://api.bitbucket.org/2.0/repositories/hydroffice/hyo_bagexplorer/downloads -F files=@BAGExplorer.1.1.0.zip
+
 
 from PyInstaller.building.build_main import Analysis, PYZ, EXE, COLLECT, BUNDLE, TOC
 from PyInstaller.compat import is_darwin
 import os
+import sys
 
 from hyo2.bagexplorer import __version__ as bagexplorer_version
+
+sys.setrecursionlimit(20000)
 
 
 def collect_pkg_data(package, include_py_files=False, subdir=None):
@@ -50,12 +56,9 @@ try:  # for GeoArray we use cartopy that can be challenging to freeze on OSX to 
 except (ImportError, OSError):
     pass
 
-icon_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, 'hyo2', 'bagexplorer', 'media'))
-if not os.path.exists(icon_folder):
-    raise RuntimeError("invalid path to icon folder: %s" % icon_folder)
-icon_file = os.path.join(icon_folder, 'BAGExplorer.ico')
+icon_file = os.path.normpath(os.path.join(os.getcwd(), 'freeze', 'BAGExplorer.ico'))
 if is_darwin:
-    icon_file = os.path.join(icon_folder, 'BAGExplorer.icns')
+    icon_file = os.path.normpath(os.path.join(os.getcwd(), 'freeze', 'BAGExplorer.icns'))
 
 a = Analysis(['BAGExplorer.py'],
              pathex=[],

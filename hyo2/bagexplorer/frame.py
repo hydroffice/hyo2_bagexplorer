@@ -4,17 +4,20 @@ import wx
 import wx.adv
 
 import logging
-logger = logging.getLogger(__name__)
 
 from hdf_compass import utils
 from hdf_compass.compass_viewer import frame
 from hdf_compass import compass_model
 
-from hyo2.bag import BAGFile, __version__ as bag_version
+from hyo2.bag import __version__ as bag_version
+from hyo2.bag.bag import BAGFile
 from hyo2.bag.bbox import Bbox2Gdal
 from hyo2.bag.elevation import Elevation2Gdal
 from hyo2.bag.uncertainty import Uncertainty2Gdal
 from hyo2.bag.tracklist import TrackList2Csv
+
+
+logger = logging.getLogger(__name__)
 
 ID_ABOUT_BAG_TOOLS = wx.NewId()
 ID_MANUAL_BAG_TOOLS = wx.NewId()
@@ -138,7 +141,7 @@ class InitFrame(frame.InitFrame):
 An application to browse and interact with Bathymetric Attributed Grid (BAG) files.
 The application is based on HDF Compass and HydrOffice BAG Tools.
 
-Developed by G.Masetti and B.R.Calder at the Center for Coastal and Ocean Mapping /
+Developed by G.Masetti at the Center for Coastal and Ocean Mapping /
 Joint Hydrographic Center (CCOM/JHC).
 """
         info.Version = __version__
@@ -174,7 +177,7 @@ For more info, visit: https://www.hyo.org/license/
         info = wx.adv.AboutDialogInfo()
         info.Name = "HydrOffice BAG Tools"
         info.Version = bag_version
-        info.Copyright = "(c) %s G.Masetti, B.R.Calder" % date.today().year
+        info.Copyright = "(c) %s G.Masetti" % date.today().year
         info.SetIcon(wx.Icon(os.path.join(self.icon_folder, 'BAG_48.png')))
         info.SetWebSite("https://github.com/hyo/hyo_bag")
         wx.adv.AboutBox(info)
