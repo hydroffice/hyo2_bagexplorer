@@ -9,6 +9,7 @@
 # The resulting .exe file is placed in the dist/BAGExplorer folder.
 #
 # REQUIRED TO MANUALLY COPY: wx\lib\pubsub\core or pubsub\sub
+# REQUIRED TO MANUALLY COPY: _gdal.xxx.pyd in osgeo\
 #
 # Uploading to BitBucket: curl -s -v -u giumas:password -X POST https://api.bitbucket.org/2.0/repositories/hydroffice/hyo_bagexplorer/downloads -F files=@BAGExplorer.1.1.0.zip
 
