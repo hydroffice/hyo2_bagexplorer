@@ -60,7 +60,7 @@ class InitFrame(frame.InitFrame):
             if 'Help' in m[1]:
                 about_id = m[0].FindItem("&About HDFCompass")
                 about_item = m[0].FindItemById(about_id)
-                about_item.SetText("About BAG Explorer")
+                about_item.SetItemLabel("About BAG Explorer")
                 m[0].Remove(about_item)
                 m[0].Append(ID_ABOUT_HDF_COMPASS, "&About HDF Compass", "Information about HDF Compass")
                 m[0].AppendSeparator()
@@ -290,7 +290,7 @@ For more info, visit: https://www.hyo.org/license/
         out_file = self._ask_file_output(fmt_name=fmt_name, fmt_ext=fmt_ext)
 
         try:
-            bag = BAGFile(bag_file)
+            bag = BAGFile(bag_file, mode='r')
             bag_meta = bag.populate_metadata()
             Bbox2Gdal(bag_meta, fmt=fmt, title=os.path.basename(bag_file), out_file=out_file)
         except Exception as e:
@@ -329,7 +329,7 @@ For more info, visit: https://www.hyo.org/license/
         out_file = self._ask_file_output(fmt_name=fmt_name, fmt_ext=fmt_ext)
 
         try:
-            bag = BAGFile(bag_file)
+            bag = BAGFile(bag_file, mode='r')
             bag_meta = bag.populate_metadata()
             bag_elv = bag.elevation(mask_nan=False)
             Elevation2Gdal(bag_elevation=bag_elv, bag_meta=bag_meta, fmt=fmt, out_file=out_file)
@@ -369,7 +369,7 @@ For more info, visit: https://www.hyo.org/license/
         out_file = self._ask_file_output(fmt_name=fmt_name, fmt_ext=fmt_ext)
 
         try:
-            bag = BAGFile(bag_file)
+            bag = BAGFile(bag_file, mode='r')
             bag_meta = bag.populate_metadata()
             bag_unc = bag.uncertainty(mask_nan=False)
             Uncertainty2Gdal(bag_uncertainty=bag_unc, bag_meta=bag_meta, fmt=fmt, out_file=out_file)
@@ -399,7 +399,7 @@ For more info, visit: https://www.hyo.org/license/
         out_file = self._ask_file_output(fmt_name=fmt_name, fmt_ext=fmt_ext)
 
         try:
-            bag = BAGFile(bag_file)
+            bag = BAGFile(bag_file, mode='r')
             bag_tkl = bag.tracking_list()
             if bag_tkl.size == 0:
                 dlg = wx.MessageDialog(parent=None, message="Nothing to export! The Tracking List is empty.",
@@ -436,7 +436,7 @@ For more info, visit: https://www.hyo.org/license/
         out_file = self._ask_file_output(fmt_name=fmt_name, fmt_ext=fmt_ext)
 
         try:
-            bag = BAGFile(bag_file)
+            bag = BAGFile(bag_file, mode='r')
             bag.extract_metadata(name=out_file)
         except Exception as e:
             dlg = wx.MessageDialog(parent=None, message="%s" % e, caption="Error", style=wx.OK | wx.ICON_ERROR)
@@ -450,7 +450,7 @@ For more info, visit: https://www.hyo.org/license/
         """ Validate the metadata as XML """
         from .text_ctrl import TextViewerFrame
         bag_file = self._ask_bag_input()
-        bag = BAGFile(bag_file)
+        bag = BAGFile(bag_file, mode='r')
         val_info = bag.validation_info()
         txt_frame = TextViewerFrame(data=val_info)
         txt_frame.Show()
