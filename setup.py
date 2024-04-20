@@ -65,7 +65,7 @@ setup(
         "wheel",
     ],
     install_requires=[
-        "hdf_compass>=0.7b11",
+        "hdf_compass>=0.7b13",
         "hyo2.bag>=1.1.4"
     ],
     python_requires='>=3.5',
