@@ -4,7 +4,7 @@
 #
 # To compile, execute the following within the source directory:
 #
-# python /path/to/pyinstaller.py freeze/BAGExplorer.1folder.spec
+# python /path/to/pyinstaller.py freeze/BAGExplorer.spec
 #
 # The resulting .exe file is placed in the dist/BAGExplorer folder.
 #
@@ -66,7 +66,7 @@ a = Analysis(['BAGExplorer.py'],
              hiddenimports=['scipy.linalg.cython_blas', 'scipy.linalg.cython_lapack',
                             'wx.adv', 'wx.html', 'wx.xml', 'pubsub.pub',
                             'scipy.linalg', 'scipy.integrate', "scipy._lib.messagestream"],  # for cartopy
-             excludes=["PySide", "PyQt4", "pandas", "IPython",
+             excludes=["PySide", "PyQt4", "PySide6", "PyQt5", "pandas", "IPython",
                        "FixTk", "tcl", "tk", "_tkinter", "tkinter", "Tkinter"],
              hookspath=None,
              runtime_hooks=None)
@@ -75,7 +75,7 @@ pyz = PYZ(a.pure)
 exe = EXE(pyz,
           a.scripts,
           exclude_binaries=True,
-          name='BAGExplorer.%s' % bagexplorer_version,
+          name='BAGExplorer',
           debug=False,
           strip=None,
           upx=True,

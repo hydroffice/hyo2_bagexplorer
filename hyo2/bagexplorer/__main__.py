@@ -1,13 +1,7 @@
-import logging
+from hyo2.abc2.lib.logging import set_logging
+from hyo2.abc2.lib.gdal_aux import GdalAux
 from hyo2.bagexplorer import explorer
 
-# logging settings
-logger = logging.getLogger()
-logger.setLevel(logging.NOTSET)
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)  # change to WARNING to reduce verbosity, DEBUG for high verbosity
-ch_formatter = logging.Formatter('%(levelname)-9s %(name)s.%(funcName)s:%(lineno)d > %(message)s')
-ch.setFormatter(ch_formatter)
-logger.addHandler(ch)
-
+set_logging(ns_list=["hyo2.abc2", "hyo2.bag", "hyo2.bagexplorer", "hdf_compass"])
+GdalAux.check_gdal_data()
 explorer.run()

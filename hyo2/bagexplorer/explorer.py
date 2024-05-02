@@ -8,7 +8,7 @@ from hdf_compass import utils
 
 from hyo2.bagexplorer import frame
 
-log = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class BagExplorerApp(CompassApp):
@@ -41,7 +41,7 @@ def run():
             # assumed to be file path
             url = utils.path2url(op.abspath(url))
         if not open_store(url):
-            log.warning('Failed to open "%s"; no handlers' % url)
+            logger.warning('Failed to open "%s"; no handlers' % url)
 
     f = frame.InitFrame()
 
