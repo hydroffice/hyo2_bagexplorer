@@ -66,9 +66,10 @@ setup(
     ],
     install_requires=[
         "hdf_compass>=0.7b13",
+        "hyo2.abc2>=2.3.6",
         "hyo2.bag>=1.1.4"
     ],
-    python_requires='>=3.5',
+    python_requires='>=3.8',
     entry_points={
         "gui_scripts": [
             'BAGExplorer = hyo2.bagexplorer.explorer:run',
@@ -86,18 +87,17 @@ setup(
 ,
     url="https://www.hydroffice.org/bag",
     classifiers=[  # https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Science/Research',
         'Natural Language :: English',
         'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Topic :: Scientific/Engineering :: GIS',
         'Topic :: Office/Business :: Office Suites',
     ],
