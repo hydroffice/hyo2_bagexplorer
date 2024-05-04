@@ -1,16 +1,10 @@
 HydrOffice BAG Explorer
 =======================
 
-.. image:: https://www.hydroffice.org/static/app_bag/img/logo.png
+.. image:: https://github.com/hydroffice/hyo2_bagexplorer/raw/master/hyo2/bagexplorer/media/BAGExplorer_256.png
     :alt: logo
 
-* Code: `GitHub repo <https://github.com/hydroffice/hyo2_bagexplorer <https://github.com/hydroffice/hyo2_bagexplorer>`_
-* Project page: `url <https://www.hydroffice.org/bag/main>`_
-* Download page: `url <https://bitbucket.org/hydroffice/hyo2_bagexplorer/downloads/>`_
-* License: LGPLv3 license (See `LICENSE <https://www.hydroffice.org/license/>`_)    
-
-General info
-------------
+|
 
 .. image:: https://img.shields.io/pypi/v/hyo2.bagexplorer.svg
     :target: https://pypi.python.org/pypi/hyo2.bagexplorer
@@ -32,6 +26,17 @@ General info
     :target: https://coveralls.io/github/hydroffice/hyo2_bagexplorer?branch=master
     :alt: coverall
 
+|
+
+* Code: `GitHub repo <https://github.com/hydroffice/hyo2_bagexplorer <https://github.com/hydroffice/hyo2_bagexplorer>`_
+* Project page: `url <https://www.hydroffice.org/bag/main>`_, `download <https://bitbucket.org/hydroffice/hyo2_bagexplorer/downloads/>`_
+* License: LGPLv3 license (See `LICENSE <https://www.hydroffice.org/license/>`_)
+
+|
+
+General info
+------------
+
 HydrOffice is a research development environment for ocean mapping. It provides a collection of hydro-packages, each of them dealing with a specific issue of the field.
 The main goal is to speed up both algorithms testing and research-2-operation.
 
@@ -52,18 +57,3 @@ For executing and packaging the *BAG Explorer* app:
 * ``hydroffice.bag`` (that also requires ``lxml`` and ``osgeo.gdal``)
 * ``PyInstaller`` *[for freezing the application]*
 * ``appdmg`` *[for creating a dmg on Mac]*
-
-
-Freezing
---------
-
-Use of Pyinstaller
-~~~~~~~~~~~~~~~~~~
-
-* ``pyinstaller --clean -y freeze/BAGExplorer.1file.spec``
-* ``pyinstaller --clean -y freeze/BAGExplorer.1folder.spec``
-
-Creation of MAC OS dmg
-~~~~~~~~~~~~~~~~~~~~~~
-
-* ``appdmg spec.json dist/BAGExplorer.dmg``
