@@ -126,12 +126,13 @@ class InitFrame(frame.InitFrame):
         self.Bind(wx.EVT_MENU, self.on_meta_validate, id=ID_TOOLS_META_VAL)
         self.Bind(wx.EVT_MENU, self.on_meta_xml, id=ID_TOOLS_META_XML)
 
-    def on_manual_bag_tools(self, evt):
+    @classmethod
+    def on_manual_bag_tools(cls, _):
         """ Open the url with the online documentation for BAG Tools """
         import webbrowser
-        webbrowser.open('http://giumas.github.io/hyo_bag/stable/index.html')
+        webbrowser.open('https://www.hydroffice.org/manuals/bag/index.html')
 
-    def on_about_bagexplorer(self, evt):
+    def on_about_bagexplorer(self, _):
         """ Display an "About BAG Explorer" dialog """
         from . import __version__
 
@@ -160,7 +161,7 @@ For more info, visit: https://www.hyo.org/license/
         info.SetWebSite("https://www.hyo.org/bag/main")
         wx.adv.AboutBox(info)
 
-    def on_about_hdf_compass(self, evt):
+    def on_about_hdf_compass(self, _):
         """ Display an "About HDF_Compass" dialog """
         from hdf_compass.utils import __version__
 
@@ -172,7 +173,7 @@ For more info, visit: https://www.hyo.org/license/
         info.SetWebSite("https://www.hdfgroup.org/projects/compass/")
         wx.adv.AboutBox(info)
 
-    def on_about_bag_tools(self, evt):
+    def on_about_bag_tools(self, _):
         """ Display an "About BAG Tools" dialog """
         info = wx.adv.AboutDialogInfo()
         info.Name = "HydrOffice BAG Tools"
@@ -196,7 +197,8 @@ For more info, visit: https://www.hyo.org/license/
                     s = "{name} ({pattern_c})|{pattern_sc}".format(
                         name=key,
                         pattern_c=",".join(store.file_extensions[key]),
-                        pattern_sc=";".join(store.file_extensions[key]) )
+                        pattern_sc=";".join(store.file_extensions[key])
+                    )
                     if s.startswith("BAG"):
                         hdf_filter_string.append(s)
                     else:
@@ -216,7 +218,7 @@ For more info, visit: https://www.hyo.org/license/
         url = utils.path2url(path)
         self.open_url(url)
 
-    def on_open_samples(self, evt):
+    def on_open_samples(self, _):
         """ Request to open a file via the Open entry in the File menu """
         def make_filter_string():
             """ Make a wxPython dialog filter string segment from dict """
@@ -229,7 +231,8 @@ For more info, visit: https://www.hyo.org/license/
                     s = "{name} ({pattern_c})|{pattern_sc}".format(
                         name=key,
                         pattern_c=",".join(store.file_extensions[key]),
-                        pattern_sc=";".join(store.file_extensions[key]) )
+                        pattern_sc=";".join(store.file_extensions[key])
+                    )
                     if s.startswith("BAG"):
                         hdf_filter_string.append(s)
                     else:
@@ -266,19 +269,19 @@ For more info, visit: https://www.hyo.org/license/
         "shp": ("shp", "Shapefile")
     }
 
-    def on_bbox_geojson(self, evt):
+    def on_bbox_geojson(self, _):
         """ Export the bounding box and some metadata to a geojson file """
         self._bbox_export("gjs")
 
-    def on_bbox_gml(self, evt):
+    def on_bbox_gml(self, _):
         """ Export the bounding box and some metadata to a GML file """
         self._bbox_export("gml")
 
-    def on_bbox_kml(self, evt):
+    def on_bbox_kml(self, _):
         """ Export the bounding box and some metadata to a KML file """
         self._bbox_export("kml")
 
-    def on_bbox_shapefile(self, evt):
+    def on_bbox_shapefile(self, _):
         """ Export the bounding box and some metadata to a Shapefile file """
         self._bbox_export("shp")
 
@@ -309,15 +312,15 @@ For more info, visit: https://www.hyo.org/license/
         "xyz": ("xyz", "XYZ")
     }
 
-    def on_elevation_ascii(self, evt):
+    def on_elevation_ascii(self, _):
         """ Export the elevation layer to an ASCII Grid """
         self._elevation_export("ascii")
 
-    def on_elevation_geotiff(self, evt):
+    def on_elevation_geotiff(self, _):
         """ Export the elevation to a GeoTIFF file """
         self._elevation_export("geotiff")
 
-    def on_elevation_xyz(self, evt):
+    def on_elevation_xyz(self, _):
         """ Export the elevation to an XYZ file """
         self._elevation_export("xyz")
 
@@ -349,15 +352,15 @@ For more info, visit: https://www.hyo.org/license/
         "xyz": ("xyz", "XYZ")
     }
 
-    def on_uncertainty_ascii(self, evt):
+    def on_uncertainty_ascii(self, _):
         """ Export the uncertainty layer to an ASCII Grid """
         self._uncertainty_export("ascii")
 
-    def on_uncertainty_geotiff(self, evt):
+    def on_uncertainty_geotiff(self, _):
         """ Export the uncertainty to a GeoTIFF file """
         self._uncertainty_export("geotiff")
 
-    def on_uncertainty_xyz(self, evt):
+    def on_uncertainty_xyz(self, _):
         """ Export the uncertainty to an XYZ file """
         self._uncertainty_export("xyz")
 
@@ -387,7 +390,7 @@ For more info, visit: https://www.hyo.org/license/
         "csv": ("csv", "Comma Separated Values"),
     }
 
-    def on_tracklist_csv(self, evt):
+    def on_tracklist_csv(self, _):
         """ Export the tracking list as Comma Separated Values """
         self._tracklist_export("csv")
 
@@ -424,7 +427,7 @@ For more info, visit: https://www.hyo.org/license/
         "xml": ("xml", "XML"),
     }
 
-    def on_meta_xml(self, evt):
+    def on_meta_xml(self, _):
         """ Export the metadata as XML """
         self._metadata_export("xml")
 
@@ -446,7 +449,7 @@ For more info, visit: https://www.hyo.org/license/
 
         self._check_file_creation(out_file)
 
-    def on_meta_validate(self, evt):
+    def on_meta_validate(self, _):
         """ Validate the metadata as XML """
         from .text_ctrl import TextViewerFrame
         bag_file = self._ask_bag_input()

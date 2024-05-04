@@ -4,25 +4,33 @@ HydrOffice BAG Explorer
 .. image:: https://www.hydroffice.org/static/mybag/img/logo.png
     :alt: logo
 
-* Code: `GitHub repo <https://github.com/hydroffice/hyo_bagexplorer <https://github.com/hydroffice/hyo_bagexplorer>`_
+* Code: `GitHub repo <https://github.com/hydroffice/hyo2_bagexplorer <https://github.com/hydroffice/hyo2_bagexplorer>`_
 * Project page: `url <https://www.hydroffice.org/bag/main>`_
-* Download page: `url <https://bitbucket.org/hydroffice/hyo_bagexplorer/downloads/>`_
+* Download page: `url <https://bitbucket.org/hydroffice/hyo2_bagexplorer/downloads/>`_
 * License: LGPLv3 license (See `LICENSE <https://www.hydroffice.org/license/>`_)    
 
 General info
 ------------
 
 .. image:: https://img.shields.io/pypi/v/hyo2.bagexplorer.svg
-    :target: https://badge.fury.io/py/hyo2.bagexplorer
-    :alt: PyPI Status
+    :target: https://pypi.python.org/pypi/hyo2.bagexplorer
+    :alt: PyPi version
 
-.. image:: https://ci.appveyor.com/api/projects/status/0pd1horwjasgjvkw?svg=true
-    :target: https://ci.appveyor.com/project/giumas/hyo-bagexplorer
-    :alt: AppVeyor Status
+.. image:: https://github.com/hydroffice/hyo2_bagexplorer/actions/workflows/bagexplorer_on_windows.yml/badge.svg
+    :target: https://github.com/hydroffice/hyo2_bagexplorer/actions/workflows/bagexplorer_on_windows.yml
+    :alt: Windows
 
-.. image:: https://travis-ci.org/hydroffice/hyo_bagexplorer.svg?branch=master
-    :target: https://travis-ci.org/hydroffice/hyo_bagexplorer
-    :alt: Travis-CI Status
+.. image:: https://github.com/hydroffice/hyo2_bagexplorer/actions/workflows/bagexplorer_on_linux.yml/badge.svg
+    :target: https://github.com/hydroffice/hyo2_bagexplorer/actions/workflows/bagexplorer_on_linux.yml
+    :alt: Linux
+
+.. image:: https://app.codacy.com/project/badge/Grade/23c4dfc529ca446f88e5cd0cb8903d7f
+    :target: https://app.codacy.com/gh/hydroffice/hyo2_bagexplorer/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
+    :alt: codacy
+
+.. image:: https://coveralls.io/repos/github/hydroffice/hyo2_bagexplorer/badge.svg?branch=master
+    :target: https://coveralls.io/github/hydroffice/hyo2_bagexplorer?branch=master
+    :alt: coverall
 
 HydrOffice is a research development environment for ocean mapping. It provides a collection of hydro-packages, each of them dealing with a specific issue of the field.
 The main goal is to speed up both algorithms testing and research-2-operation.

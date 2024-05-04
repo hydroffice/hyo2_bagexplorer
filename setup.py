@@ -42,21 +42,8 @@ setup(
         "*.tests", "*.tests.*", "tests.*", "tests", "*.test*",
     ]),
     package_data={
-        "": ["media/*.png", "media/*.ico", "media/*.icns", "media/*.txt",],
-        'hyo2.bag': [
-            'iso19139/bag/*',
-            'iso19139/gco/*',
-            'iso19139/gmd/*',
-            'iso19139/gmi/*',
-            'iso19139/gml/*.xsd',
-            'iso19139/gml/*.txt',
-            'iso19139/gml/3.1.1/smil/*',
-            'iso19139/gsr/*',
-            'iso19139/gss/*',
-            'iso19139/gts/*',
-            'iso19139/xlink/*',
-            'iso19757-3/*',
-            'samples/*',
+        "": [
+            "*.png", "*.icns", "*.ico", "*.txt"
         ],
     },
     zip_safe=False,
@@ -65,9 +52,9 @@ setup(
         "wheel",
     ],
     install_requires=[
-        "hdf_compass>=0.7b13",
-        "hyo2.abc2>=2.3.6",
-        "hyo2.bag>=1.1.4"
+        "hdf_compass>=0.7b14",
+        "hyo2.abc2>=2.3.7",
+        "hyo2.bag>=1.2.4"
     ],
     python_requires='>=3.8',
     entry_points={
