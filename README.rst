@@ -1,7 +1,7 @@
 HydrOffice BAG Explorer
 =======================
 
-.. image:: https://www.hydroffice.org/static/mybag/img/logo.png
+.. image:: https://www.hydroffice.org/static/app_bag/img/logo.png
     :alt: logo
 
 * Code: `GitHub repo <https://github.com/hydroffice/hyo2_bagexplorer <https://github.com/hydroffice/hyo2_bagexplorer>`_
