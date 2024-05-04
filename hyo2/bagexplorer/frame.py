@@ -19,28 +19,28 @@ from hyo2.bag.tracklist import TrackList2Csv
 
 logger = logging.getLogger(__name__)
 
-ID_ABOUT_BAG_TOOLS = wx.NewId()
-ID_MANUAL_BAG_TOOLS = wx.NewId()
-ID_ABOUT_HDF_COMPASS = wx.NewId()
-ID_OPEN_SAMPLES = wx.NewId()
+ID_ABOUT_BAG_TOOLS = wx.NewIdRef()
+ID_MANUAL_BAG_TOOLS = wx.NewIdRef()
+ID_ABOUT_HDF_COMPASS = wx.NewIdRef()
+ID_OPEN_SAMPLES = wx.NewIdRef()
 
-ID_TOOLS_BBOX_GJS = wx.NewId()
-ID_TOOLS_BBOX_GML = wx.NewId()
-ID_TOOLS_BBOX_KML = wx.NewId()
-ID_TOOLS_BBOX_SHP = wx.NewId()
+ID_TOOLS_BBOX_GJS = wx.NewIdRef()
+ID_TOOLS_BBOX_GML = wx.NewIdRef()
+ID_TOOLS_BBOX_KML = wx.NewIdRef()
+ID_TOOLS_BBOX_SHP = wx.NewIdRef()
 
-ID_TOOLS_UNC_ASC = wx.NewId()
-ID_TOOLS_UNC_GTF = wx.NewId()
-ID_TOOLS_UNC_XYZ = wx.NewId()
+ID_TOOLS_UNC_ASC = wx.NewIdRef()
+ID_TOOLS_UNC_GTF = wx.NewIdRef()
+ID_TOOLS_UNC_XYZ = wx.NewIdRef()
 
-ID_TOOLS_ELV_ASC = wx.NewId()
-ID_TOOLS_ELV_GTF = wx.NewId()
-ID_TOOLS_ELV_XYZ = wx.NewId()
+ID_TOOLS_ELV_ASC = wx.NewIdRef()
+ID_TOOLS_ELV_GTF = wx.NewIdRef()
+ID_TOOLS_ELV_XYZ = wx.NewIdRef()
 
-ID_TOOLS_TKL_CSV = wx.NewId()
+ID_TOOLS_TKL_CSV = wx.NewIdRef()
 
-ID_TOOLS_META_VAL = wx.NewId()
-ID_TOOLS_META_XML = wx.NewId()
+ID_TOOLS_META_VAL = wx.NewIdRef()
+ID_TOOLS_META_XML = wx.NewIdRef()
 
 frame.BaseFrame.icon_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'media'))
 
