@@ -40,13 +40,17 @@ General info
 HydrOffice is a research development environment for ocean mapping. It provides a collection of hydro-packages, each of them dealing with a specific issue of the field.
 The main goal is to speed up both algorithms testing and research-2-operation.
 
-BAG Explorer is a light application, based on HDF Compass and the HydrOffice BAG library tools, to explore BAG data files.
+BAG Explorer is a light application, based on `HDF Compass <http://github.com/HDFGroup/hdf-compass>`_ and the `HydrOffice BAG package <https://github.com/hydroffice/hyo2_bag>`_, to explore BAG data files.
 
-HDF Compass is written in Python, but ships as a native application on Windows, OS X, and Linux, by using PyInstaller and Py2App to package the app.
-For more info about HDF Compass, visit the `GitHub <http://github.com/HDFGroup/hdf-compass>`_ repository and the `project <https://www.hdfgroup.org/projects/compass/>`_ web page.
+   |info| **IMPORTANT NOTE**
 
-HydrOffice BAG library provides access to BAG-specific features, as well as a collection of tools to verify and manipulate BAG data files.
+   BAG is a data format developed and maintained by the `Open Navigation Surface Working Group <http://www.opennavsurf.org/>`_.
 
+   For the official BAG reference implementation, go to `https://github.com/OpenNavigationSurface/BAG <https://github.com/OpenNavigationSurface/BAG>`_
+
+
+.. |info| image:: https://www.hydroffice.org/img/info.svg
+    :alt: info
 
 Dependencies
 ------------
@@ -54,6 +58,7 @@ Dependencies
 For executing and packaging the *BAG Explorer* app:
 
 * ``hdf_compass`` (that requires several dependencies as ``matplotlib``, ``wxPython``, ``h5py``)
-* ``hydroffice.bag`` (that also requires ``lxml`` and ``osgeo.gdal``)
+* ``hyo2.bag`` (that also requires ``lxml`` and ``osgeo.gdal``)
+* ``hyo2.abc2``
 * ``PyInstaller`` *[for freezing the application]*
 * ``appdmg`` *[for creating a dmg on Mac]*
