@@ -52,11 +52,11 @@ setup(
         "wheel",
     ],
     install_requires=[
-        "hdf_compass>=0.7b14",
-        "hyo2.abc2>=2.3.7",
-        "hyo2.bag>=1.2.4"
+        "hdf_compass>=0.7b16",
+        "hyo2.abc2>=2.4.0",
+        "hyo2.bag>=1.2.12"
     ],
-    python_requires='>=3.8',
+    python_requires='>=3.9',
     entry_points={
         "gui_scripts": [
             'BAGExplorer = hyo2.bagexplorer.explorer:run',
@@ -81,10 +81,10 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
         'Topic :: Scientific/Engineering :: GIS',
         'Topic :: Office/Business :: Office Suites',
     ],
