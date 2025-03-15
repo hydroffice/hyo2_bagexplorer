@@ -1,21 +1,19 @@
+import logging
 import os
 from datetime import date
+from typing import Any
+
 import wx
 import wx.adv
-
-import logging
-
+from hdf_compass import compass_model
 from hdf_compass import utils
 from hdf_compass.compass_viewer import frame
-from hdf_compass import compass_model
-
 from hyo2.bag import __version__ as bag_version
 from hyo2.bag.bag import BAGFile
 from hyo2.bag.bbox import Bbox2Gdal
 from hyo2.bag.elevation import Elevation2Gdal
-from hyo2.bag.uncertainty import Uncertainty2Gdal
 from hyo2.bag.tracklist import TrackList2Csv
-
+from hyo2.bag.uncertainty import Uncertainty2Gdal
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +48,7 @@ class InitFrame(frame.InitFrame):
 
     icon_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'media'))
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(InitFrame, self).__init__()
         self.SetTitle("BAG Explorer")
 
@@ -127,12 +125,12 @@ class InitFrame(frame.InitFrame):
         self.Bind(wx.EVT_MENU, self.on_meta_xml, id=ID_TOOLS_META_XML)
 
     @classmethod
-    def on_manual_bag_tools(cls, _):
+    def on_manual_bag_tools(cls, _: Any) -> None:
         """ Open the url with the online documentation for BAG Tools """
         import webbrowser
         webbrowser.open('https://www.hydroffice.org/manuals/bag/index.html')
 
-    def on_about_bagexplorer(self, _):
+    def on_about_bagexplorer(self, _: Any) -> None:
         """ Display an "About BAG Explorer" dialog """
         from . import __version__
 
@@ -161,7 +159,7 @@ For more info, visit: https://www.hyo.org/license/
         info.SetWebSite("https://www.hyo.org/bag/main")
         wx.adv.AboutBox(info)
 
-    def on_about_hdf_compass(self, _):
+    def on_about_hdf_compass(self, _: Any) -> None:
         """ Display an "About HDF_Compass" dialog """
         from hdf_compass.utils import __version__
 
@@ -173,7 +171,7 @@ For more info, visit: https://www.hyo.org/license/
         info.SetWebSite("https://www.hdfgroup.org/projects/compass/")
         wx.adv.AboutBox(info)
 
-    def on_about_bag_tools(self, _):
+    def on_about_bag_tools(self, _: Any) -> None:
         """ Display an "About BAG Tools" dialog """
         info = wx.adv.AboutDialogInfo()
         info.Name = "HydrOffice BAG Tools"
@@ -183,7 +181,7 @@ For more info, visit: https://www.hyo.org/license/
         info.SetWebSite("https://github.com/hyo/hyo_bag")
         wx.adv.AboutBox(info)
 
-    def on_file_open(self, evt):
+    def on_file_open(self, evt: Any) -> None:
         """ Request to open a file via the Open entry in the File menu """
 
         def make_filter_string():
@@ -218,8 +216,9 @@ For more info, visit: https://www.hyo.org/license/
         url = utils.path2url(path)
         self.open_url(url)
 
-    def on_open_samples(self, _):
+    def on_open_samples(self, _: Any) -> None:
         """ Request to open a file via the Open entry in the File menu """
+
         def make_filter_string():
             """ Make a wxPython dialog filter string segment from dict """
             filter_string = []
@@ -269,23 +268,23 @@ For more info, visit: https://www.hyo.org/license/
         "shp": ("shp", "Shapefile")
     }
 
-    def on_bbox_geojson(self, _):
+    def on_bbox_geojson(self, _: Any) -> None:
         """ Export the bounding box and some metadata to a geojson file """
         self._bbox_export("gjs")
 
-    def on_bbox_gml(self, _):
+    def on_bbox_gml(self, _: Any) -> None:
         """ Export the bounding box and some metadata to a GML file """
         self._bbox_export("gml")
 
-    def on_bbox_kml(self, _):
+    def on_bbox_kml(self, _: Any) -> None:
         """ Export the bounding box and some metadata to a KML file """
         self._bbox_export("kml")
 
-    def on_bbox_shapefile(self, _):
+    def on_bbox_shapefile(self, _: Any) -> None:
         """ Export the bounding box and some metadata to a Shapefile file """
         self._bbox_export("shp")
 
-    def _bbox_export(self, fmt='kml'):
+    def _bbox_export(self, fmt: str = 'kml') -> None:
         """ Helper function to be re-used for different output formats """
         bag_file = self._ask_bag_input()
         fmt_name = self.bbox_formats[fmt][1]
@@ -312,19 +311,19 @@ For more info, visit: https://www.hyo.org/license/
         "xyz": ("xyz", "XYZ")
     }
 
-    def on_elevation_ascii(self, _):
+    def on_elevation_ascii(self, _: Any) -> None:
         """ Export the elevation layer to an ASCII Grid """
         self._elevation_export("ascii")
 
-    def on_elevation_geotiff(self, _):
+    def on_elevation_geotiff(self, _: Any) -> None:
         """ Export the elevation to a GeoTIFF file """
         self._elevation_export("geotiff")
 
-    def on_elevation_xyz(self, _):
+    def on_elevation_xyz(self, _: Any) -> None:
         """ Export the elevation to an XYZ file """
         self._elevation_export("xyz")
 
-    def _elevation_export(self, fmt='geotiff'):
+    def _elevation_export(self, fmt: str = 'geotiff') -> None:
         """ Helper function to be re-used for different output formats """
         bag_file = self._ask_bag_input()
         fmt_name = self._elevation_formats[fmt][1]
@@ -352,19 +351,19 @@ For more info, visit: https://www.hyo.org/license/
         "xyz": ("xyz", "XYZ")
     }
 
-    def on_uncertainty_ascii(self, _):
+    def on_uncertainty_ascii(self, _: Any) -> None:
         """ Export the uncertainty layer to an ASCII Grid """
         self._uncertainty_export("ascii")
 
-    def on_uncertainty_geotiff(self, _):
+    def on_uncertainty_geotiff(self, _: Any) -> None:
         """ Export the uncertainty to a GeoTIFF file """
         self._uncertainty_export("geotiff")
 
-    def on_uncertainty_xyz(self, _):
+    def on_uncertainty_xyz(self, _: Any) -> None:
         """ Export the uncertainty to an XYZ file """
         self._uncertainty_export("xyz")
 
-    def _uncertainty_export(self, fmt='geotiff'):
+    def _uncertainty_export(self, fmt: str = 'geotiff') -> None:
         """ Helper function to be re-used for different output formats """
         bag_file = self._ask_bag_input()
         fmt_name = self._uncertainty_formats[fmt][1]
@@ -390,11 +389,11 @@ For more info, visit: https://www.hyo.org/license/
         "csv": ("csv", "Comma Separated Values"),
     }
 
-    def on_tracklist_csv(self, _):
+    def on_tracklist_csv(self, _: Any) -> None:
         """ Export the tracking list as Comma Separated Values """
         self._tracklist_export("csv")
 
-    def _tracklist_export(self, fmt='csv'):
+    def _tracklist_export(self, fmt: str = 'csv') -> None:
         """ Helper function to be re-used for different output formats """
         bag_file = self._ask_bag_input()
         fmt_name = self._tracklist_formats[fmt][1]
@@ -427,11 +426,11 @@ For more info, visit: https://www.hyo.org/license/
         "xml": ("xml", "XML"),
     }
 
-    def on_meta_xml(self, _):
+    def on_meta_xml(self, _: Any) -> None:
         """ Export the metadata as XML """
         self._metadata_export("xml")
 
-    def _metadata_export(self, fmt='xml'):
+    def _metadata_export(self, fmt: str = 'xml') -> None:
         """ Helper function to be re-used for different output formats """
         bag_file = self._ask_bag_input()
         fmt_name = self._metadata_formats[fmt][1]
@@ -449,7 +448,7 @@ For more info, visit: https://www.hyo.org/license/
 
         self._check_file_creation(out_file)
 
-    def on_meta_validate(self, _):
+    def on_meta_validate(self, _: Any) -> None:
         """ Validate the metadata as XML """
         from .text_ctrl import TextViewerFrame
         bag_file = self._ask_bag_input()
@@ -460,7 +459,7 @@ For more info, visit: https://www.hyo.org/license/
 
     # BAG Tools helpers
 
-    def _ask_bag_input(self):
+    def _ask_bag_input(self) -> str:
         """ Open a file dialog to make the user to select the input BAG file """
         dlg = wx.FileDialog(self, "Select input BAG File", wildcard='BAG Files (*.bag)|*.bag|All Files (*.*)|*.*',
                             style=wx.FD_OPEN | wx.FD_FILE_MUST_EXIST)
@@ -470,7 +469,7 @@ For more info, visit: https://www.hyo.org/license/
         logger.debug("input: %s" % bag_file)
         return bag_file
 
-    def _ask_file_output(self, fmt_name, fmt_ext):
+    def _ask_file_output(self, fmt_name: str, fmt_ext: str) -> str:
         """ Open a file dialog to make the user to select the output filename """
         logger.debug("format: %s [.%s]" % (fmt_name, fmt_ext))
         dlg = wx.FileDialog(self, "Select output %s File" % fmt_name,
@@ -483,7 +482,7 @@ For more info, visit: https://www.hyo.org/license/
         return out_file
 
     @classmethod
-    def _check_file_creation(cls, out_file):
+    def _check_file_creation(cls, out_file: str) -> None:
         """ check file creation """
         if os.path.exists(out_file):
             dlg = wx.MessageDialog(parent=None, message="File created: %s" % out_file,

@@ -1,8 +1,7 @@
-import wx
 import os
+from typing import Any
 
-import logging
-log = logging.getLogger(__name__)
+import wx
 
 
 class TextViewerFrame(wx.Frame):
@@ -10,7 +9,7 @@ class TextViewerFrame(wx.Frame):
 
     icon_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'media'))
 
-    def __init__(self, data, title="Validation"):
+    def __init__(self, data: Any, title: str = "Validation") -> None:
         """ Create a new Matplotlib plotting window for a 1D line plot """
         wx.Frame.__init__(self, parent=None, id=wx.ID_ANY, title=title, size=(800, 400))
 

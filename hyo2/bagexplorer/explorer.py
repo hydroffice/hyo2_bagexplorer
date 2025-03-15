@@ -1,24 +1,22 @@
-import wx
-
 import logging
 
-from hdf_compass.compass_viewer.viewer import load_plugins
-from hdf_compass.compass_viewer import open_store, CompassApp
+import wx
 from hdf_compass import utils
-
+from hdf_compass.compass_viewer import open_store, CompassApp
+from hdf_compass.compass_viewer.viewer import load_plugins
 from hyo2.bagexplorer import frame
 
 logger = logging.getLogger(__name__)
 
 
 class BagExplorerApp(CompassApp):
-    def __init__(self, redirect):
+    def __init__(self, redirect: bool) -> None:
         """ Constructor.  If *redirect*, show a windows with console output."""
         super(BagExplorerApp, self).__init__(redirect=redirect)
         self.SetAppName("BAG Explorer")
 
 
-def run():
+def run() -> None:
     """ Run BAG Explorer.  Handles all command-line arguments, etc."""
 
     try:
