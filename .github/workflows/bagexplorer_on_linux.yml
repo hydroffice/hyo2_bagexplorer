@@ -27,6 +27,7 @@ jobs:
         conda install pypubsub wxPython requests
         pip install PySide6
         sudo apt-get install -y libegl1
+        sudo apt-get install -y libtiff5 libtiff5-dev libtiff-dev
         pip install hyo2.bag
         pip install --no-deps hdf-compass>=0.7b14
         pip install --no-deps .
